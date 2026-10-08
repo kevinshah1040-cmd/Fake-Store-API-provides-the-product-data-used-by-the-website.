@@ -1,0 +1,302 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products - ShopZone</title>
+
+    <link rel="stylesheet" href="{% static 'css/static.css' %}">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Shop<span>Zone</span>
+        </div>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/products/">Products</a>
+            <a href="/categories/">Categories</a>
+            <a href="/contact/">Contact</a>
+        </nav>
+
+        <a href="/products/" class="nav-button">
+            Shop Now
+        </a>
+
+    </header>
+
+
+    <!-- ================= PAGE HERO ================= -->
+
+    <section class="page-hero">
+
+        <div class="page-hero-content">
+
+            <p class="small-title">
+                OUR COLLECTION
+            </p>
+
+            <h1>
+                Explore Our Products
+            </h1>
+
+            <p>
+                Discover amazing products at great prices.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="products-section">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                SHOP NOW
+            </p>
+
+            <h2>
+                All Products
+            </h2>
+
+            <p>
+                Find something you love from our latest collection.
+            </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+            {% for product in products %}
+
+            <div class="product-card">
+
+                <!-- Product Image -->
+
+                <div class="product-image-box">
+
+                    <span class="product-badge">
+                        {{ product.category }}
+                    </span>
+
+                    <button class="heart-button">
+                        ♥
+                    </button>
+
+                    <img
+                        src="{{ product.images.0 }}"
+                        alt="{{ product.title }}"
+                        class="product-image"
+                    >
+
+                </div>
+
+
+                <!-- Product Information -->
+
+                <div class="product-info">
+
+                    <h3>
+                        {{ product.title }}
+                    </h3>
+
+                    <p class="product-description">
+                        {{ product.description|truncatewords:12 }}
+                    </p>
+
+
+                    <!-- Rating -->
+
+                    <div class="product-rating">
+
+                        <span>
+                            ★
+                        </span>
+
+                        <strong>
+                            {{ product.rating }}
+                        </strong>
+
+                        <small>
+                            / 5
+                        </small>
+
+                    </div>
+
+
+                    <!-- Price -->
+
+                    <div class="product-bottom">
+
+                        <div class="product-price">
+                            ${{ product.price }}
+                        </div>
+
+                        <a
+                            href="https://dummyjson.com/products/{{ product.id }}"
+                            target="_blank"
+                            class="cart-button"
+                        >
+                            Add to Cart
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% empty %}
+
+                <p class="no-products">
+                    No products found.
+                </p>
+
+            {% endfor %}
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta-section">
+
+        <div class="cta-content">
+
+            <p class="section-label">
+                DON'T MISS OUT
+            </p>
+
+            <h2>
+                Find Something You Love
+            </h2>
+
+            <p>
+                Browse our collection and discover your next favorite product.
+            </p>
+
+            <a href="/categories/" class="primary-button">
+                Browse Categories
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-column">
+
+                <h3>
+                    Shop<span>Zone</span>
+                </h3>
+
+                <p>
+                    Discover quality products at amazing prices.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/products/">
+                    Products
+                </a>
+
+                <a href="/categories/">
+                    Categories
+                </a>
+
+                <a href="/contact/">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Categories
+                </h4>
+
+                <a href="/categories/?category=beauty">
+                    Beauty
+                </a>
+
+                <a href="/categories/?category=smartphones">
+                    Electronics
+                </a>
+
+                <a href="/categories/?category=mens-shirts">
+                    Fashion
+                </a>
+
+                <a href="/categories/?category=furniture">
+                    Home
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Contact
+                </h4>
+
+                <p>
+                    Email: hello@shopzone.com
+                </p>
+
+                <p>
+                    Phone: +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 ShopZone. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+</body>
+</html>

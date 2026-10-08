@@ -1,0 +1,546 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>ShopZone - Home</title>
+
+    <link
+        rel="stylesheet"
+        href="{% static 'css/static.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            Shop<span>Zone</span>
+        </div>
+
+
+        <nav class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+            <a href="/products/">
+                Products
+            </a>
+
+            <a href="/categories/">
+                Categories
+            </a>
+
+            <a href="/contact/">
+                Contact
+            </a>
+
+        </nav>
+
+
+        <a
+            href="/products/"
+            class="nav-button"
+        >
+            Shop Now
+        </a>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <p class="small-title">
+                WELCOME TO SHOPZONE
+            </p>
+
+
+            <h1>
+                Discover Products
+                <span>You'll Love</span>
+            </h1>
+
+
+            <p class="hero-description">
+                Explore our collection of amazing products,
+                great prices, and everything you need in one place.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a
+                    href="/products/"
+                    class="primary-button"
+                >
+                    Shop Products →
+                </a>
+
+
+                <a
+                    href="/categories/"
+                    class="secondary-button"
+                >
+                    Explore Categories
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="categories-section">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                EXPLORE
+            </p>
+
+            <h2>
+                Shop By Category
+            </h2>
+
+            <p>
+                Find exactly what you're looking for.
+            </p>
+
+        </div>
+
+
+        <div class="category-grid">
+
+
+            <a
+                href="/categories/?category=beauty"
+                class="category-card"
+            >
+
+                <div class="category-icon">
+                    ✨
+                </div>
+
+                <div class="category-content">
+
+                    <span>
+                        CATEGORY 01
+                    </span>
+
+                    <h3>
+                        Beauty
+                    </h3>
+
+                    <p>
+                        Discover beauty and personal care products.
+                    </p>
+
+                    <strong>
+                        Explore →
+                    </strong>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/categories/?category=smartphones"
+                class="category-card"
+            >
+
+                <div class="category-icon">
+                    📱
+                </div>
+
+                <div class="category-content">
+
+                    <span>
+                        CATEGORY 02
+                    </span>
+
+                    <h3>
+                        Electronics
+                    </h3>
+
+                    <p>
+                        Explore smartphones and modern technology.
+                    </p>
+
+                    <strong>
+                        Explore →
+                    </strong>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/categories/?category=mens-shirts"
+                class="category-card"
+            >
+
+                <div class="category-icon">
+                    👕
+                </div>
+
+                <div class="category-content">
+
+                    <span>
+                        CATEGORY 03
+                    </span>
+
+                    <h3>
+                        Fashion
+                    </h3>
+
+                    <p>
+                        Find stylish clothing and fashion products.
+                    </p>
+
+                    <strong>
+                        Explore →
+                    </strong>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="/categories/?category=furniture"
+                class="category-card"
+            >
+
+                <div class="category-icon">
+                    🛋️
+                </div>
+
+                <div class="category-content">
+
+                    <span>
+                        CATEGORY 04
+                    </span>
+
+                    <h3>
+                        Home
+                    </h3>
+
+                    <p>
+                        Upgrade your home with beautiful furniture.
+                    </p>
+
+                    <strong>
+                        Explore →
+                    </strong>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= PRODUCTS ================= -->
+
+    <section class="products-section">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                TRENDING NOW
+            </p>
+
+            <h2>
+                Popular Products
+            </h2>
+
+            <p>
+                Check out some of our most popular products.
+            </p>
+
+        </div>
+
+
+        <div class="product-grid">
+
+            {% for product in products %}
+
+            <div class="product-card">
+
+
+                <div class="product-image-box">
+
+                    <span class="product-badge">
+                        {{ product.category }}
+                    </span>
+
+
+                    <button class="heart-button">
+                        ♥
+                    </button>
+
+
+                    <img
+                        src="{{ product.images.0 }}"
+                        alt="{{ product.title }}"
+                        class="product-image"
+                    >
+
+                </div>
+
+
+
+                <div class="product-info">
+
+                    <h3>
+                        {{ product.title }}
+                    </h3>
+
+
+                    <p class="product-description">
+                        {{ product.description|truncatewords:12 }}
+                    </p>
+
+
+                    <div class="product-rating">
+
+                        <span>
+                            ★
+                        </span>
+
+                        <strong>
+                            {{ product.rating }}
+                        </strong>
+
+                        <small>
+                            / 5
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="product-bottom">
+
+                        <div class="product-price">
+                            ${{ product.price }}
+                        </div>
+
+
+                        <a
+                            href="https://dummyjson.com/products/{{ product.id }}"
+                            target="_blank"
+                            class="cart-button"
+                        >
+                            Add to Cart
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            {% empty %}
+
+            <p class="no-products">
+                No products available.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div class="view-all-container">
+
+            <a
+                href="/products/"
+                class="primary-button"
+            >
+                View All Products →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= CTA ================= -->
+
+    <section class="cta-section">
+
+        <div class="cta-content">
+
+            <p class="section-label">
+                SHOPZONE
+            </p>
+
+
+            <h2>
+                Ready To Find Something Amazing?
+            </h2>
+
+
+            <p>
+                Browse our collection and discover your next
+                favorite product.
+            </p>
+
+
+            <a
+                href="/products/"
+                class="primary-button"
+            >
+                Start Shopping →
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+
+            <div class="footer-column">
+
+                <h3>
+                    Shop<span>Zone</span>
+                </h3>
+
+                <p>
+                    Discover quality products at amazing prices.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <a href="/">
+                    Home
+                </a>
+
+                <a href="/products/">
+                    Products
+                </a>
+
+                <a href="/categories/">
+                    Categories
+                </a>
+
+                <a href="/contact/">
+                    Contact
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Categories
+                </h4>
+
+                <a href="/categories/?category=beauty">
+                    Beauty
+                </a>
+
+                <a href="/categories/?category=smartphones">
+                    Electronics
+                </a>
+
+                <a href="/categories/?category=mens-shirts">
+                    Fashion
+                </a>
+
+                <a href="/categories/?category=furniture">
+                    Home
+                </a>
+
+            </div>
+
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Contact
+                </h4>
+
+                <p>
+                    Email: hello@shopzone.com
+                </p>
+
+                <p>
+                    Phone: +91 98765 43210
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 ShopZone. All rights reserved.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
